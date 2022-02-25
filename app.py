@@ -1,29 +1,38 @@
 from chalice import Chalice
+import boto3
+import botocore
+import io
+import os
+from chalicelib.excelcreator import ExcelCreator
 
 app = Chalice(app_name='data-export-backend')
+BUCKET = "data-export-project"
 
+@app.route('/download')
+def getDownloadLink():
+    try:
+        saveExcelToS3()
+    except botocore.exceptions.ClientError as e:
+        return {"status-code" : e.response['Error']['Code']}
+    s3_client = boto3.client('s3')
+    response = s3_client.generate_presigned_url('get_object',
+                                                    Params={'Bucket': BUCKET,
+                                                            'Key': "analysis.xlsx"},
+                                                    ExpiresIn=3600)
+    return {"status-code": "200 OK", "download-link":response}
 
-@app.route('/')
-def index():
-    return {'hello': 'world'}
+def saveExcelToS3():
+    storage = boto3.resource('s3')
+    try:
+        storage.Object(BUCKET,'analysis.xlsx').load()
+    except botocore.exceptions.ClientError as e:
+        if e.response['Error']['Code'] == "404":
+        # The object does not exist.
+            with io.BytesIO() as output:
+                creator = ExcelCreator(output)
+                creator.generateExcel()
+                storage.Object(BUCKET, "analysis.xlsx").put(Body = output.getvalue())
+        else:
+        # Something else has gone wrong.
 
-
-# The view function above will return {"hello": "world"}
-# whenever you make an HTTP GET request to '/'.
-#
-# Here are a few more examples:
-#
-# @app.route('/hello/{name}')
-# def hello_name(name):
-#    # '/hello/james' -> {"hello": "james"}
-#    return {'hello': name}
-#
-# @app.route('/users', methods=['POST'])
-# def create_user():
-#     # This is the JSON body the user sent in their POST request.
-#     user_as_json = app.current_request.json_body
-#     # We'll echo the json body back to the user in a 'user' key.
-#     return {'user': user_as_json}
-#
-# See the README documentation for more examples.
-#
+            raise

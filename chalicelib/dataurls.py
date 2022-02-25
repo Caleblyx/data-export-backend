@@ -1,0 +1,2 @@
+GRADUATES = "https://data.gov.sg/api/action/datastore_search?resource_id=2264a6ed-51f5-45d6-accb-1a980e32e632&sort=year%20desc&limit=10"
+INTAKES = "https://data.gov.sg/api/action/datastore_search?resource_id=be05b06d-1042-45de-a35b-5a5e04e7c704&sort=year%20desc&limit=10"

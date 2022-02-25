@@ -1,4 +1,6 @@
+chalice == 1.26.6
 pandas == 1.4.1
 openpyxl == 3.0.9
 XlsxWriter == 3.0.2
 boto3 == 1.21.6
+awscli == 1.22.61
