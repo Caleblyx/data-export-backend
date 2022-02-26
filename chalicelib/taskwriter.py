@@ -47,7 +47,6 @@ class TaskWriter1(TaskWriterInterface):
             })
         chart.set_y_axis({'name' : "Number of Graduates", "min": yMin, "max": yMax})
         chart.set_x_axis({'name': "Years", 'major_unit': 1, "min": 2016, "max": 2025, 'num_font':  {'rotation': 45}})
-        chart.set_size({'x-scale': 2, 'y-scale': 1})
         self.tnp.insert_chart(position, chart)
 
 
@@ -78,5 +77,4 @@ class TaskWriter2(TaskWriterInterface):
             })
         chart.set_y_axis({'name' : "Percentage of Difference", "min": yMin, "max": yMax})
         chart.set_x_axis({'name': "Years", 'major_unit': 1, "min": 2016, "max": 2020, 'num_font':  {'rotation': 45}})
-        chart.set_size({'x-scale': 2, 'y-scale': 1})
         self.pod.insert_chart(position, chart)
