@@ -36,6 +36,3 @@ def saveExcelToS3():
         # Something else has gone wrong.
 
             raise
-
-creator = ExcelCreator("./analysis.xlsx")
-creator.generateExcel()
