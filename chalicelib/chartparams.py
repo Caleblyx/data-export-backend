@@ -54,37 +54,37 @@ TASK2 = [
     {
         "institutes" : ["nus", "ntu", "smu", "ite"],
         "yMin" : 0,
-        "yMax" : 20,
+        "yMax" : 26,
         "position" : "A1"             
     },
     {
         "institutes" : ["sit", "sutd", "nie"],
         "yMin" : 0,
-        "yMax" : 55,
+        "yMax" : 90,
         "position" : "A16"             
     },
     {
         "institutes" : ["suss"],
-        "yMin" : 60,
-        "yMax" : 110,
+        "yMin" : 75,
+        "yMax" : 130,
         "position" : "A32"             
     }, 
     {
         "institutes": ["singapore_polytechnic", "ngee_ann_polytechnic", "temasek_polytechnic", "nanyang_polytechnic", "republic_polytechnic"],
         "yMin" : 0,
-        "yMax" : 8,
+        "yMax" : 12,
         "position" : "J1"
     },
     {
         "institutes": ["lasalle_diploma", "lasalle_degree"],
         "yMin" : 0,
-        "yMax" : 35,
+        "yMax" : 38,
         "position" : "J16"
     },
     {
         "institutes": ["nafa_diploma", "nafa_degree"],
         "yMin" : 0,
-        "yMax" : 45,
+        "yMax" : 60,
         "position" : "J32"
     },
 ]

@@ -10,7 +10,7 @@ class DataFrameTransformer:
         for col in columns:
             if col in idxColumns:
                 continue
-            resDf[col] = abs(df1[col] - df2[col]) / ((df1[col] + df2[col]//2)) * 100
+            resDf[col] = abs(df1[col] - df2[col]) / ((df1[col] + df2[col])//2) * 100
         return resDf.round(2)
 
     
