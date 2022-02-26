@@ -22,6 +22,11 @@ class TaskWriter1(TaskWriterInterface):
         dataFrame.to_excel(self.writer, "Graduates")
         self.tnp = self.workbook.add_worksheet('Trends and Projections charts')
 
+        for column in columns:
+            column_width = max(dataFrame[column].astype(str).map(len).max(), len(column)) + 10
+            col_idx = self.nameToIdx[column]
+            writer.sheets['Graduates'].set_column(col_idx, col_idx, column_width)
+
     def addTaskChart(self, institutions, yMin, yMax, position):
         colors = iter(["black", "red", "green", "blue", "yellow"])
         chart = self.workbook.add_chart({'type' : 'scatter'})
@@ -62,7 +67,21 @@ class TaskWriter2(TaskWriterInterface):
             self.nameToIdx[col] = idx + 1
 
         dataFrame1.to_excel(self.writer, "Intakes")
+
+        for column in columns:
+            column_width = max(dataFrame1[column].astype(str).map(len).max(), len(column)) + 10
+            col_idx = self.nameToIdx[column]
+            writer.sheets['Intakes'].set_column(col_idx, col_idx, column_width)
+
         dataFrame2.to_excel(self.writer, "Percentage of Difference")
+
+        for column in columns:
+            column_width = max(dataFrame2[column].astype(str).map(len).max(), len(column)) + 10
+            col_idx = self.nameToIdx[column]
+            writer.sheets['Percentage of Difference'].set_column(col_idx, col_idx, column_width)
+
+        
+
         self.pod = self.workbook.add_worksheet('Percentage of Difference charts')
     
     def addTaskChart(self, institutions, yMin, yMax, position):
