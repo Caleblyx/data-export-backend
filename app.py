@@ -8,7 +8,7 @@ from chalicelib.excelcreator import ExcelCreator
 app = Chalice(app_name='data-export-backend')
 BUCKET = "data-export-project"
 
-@app.route('/download')
+@app.route('/download', cors = True)
 def getDownloadLink():
     try:
         saveExcelToS3()

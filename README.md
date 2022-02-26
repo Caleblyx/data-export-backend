@@ -1,0 +1,2 @@
+# data-export-backend
+Backend of the data-export application developed in python using AWS Chalice, Pandas, ExcelWriter, and deployed on AWS lambda. Visit the website [here](https://main.d2slmptfbfwf0z.amplifyapp.com/#about-point)
